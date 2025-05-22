@@ -23,14 +23,14 @@ const GameGrid = ({ gameQuery, onSelectGenre, selectedGenre }: Props) => {
 
     const result: Game[][] = [];
     for (let i = 0; i < columnCount; i++) {
-      result.push(data.filter((_, index) => index % columnCount === i));
+      result.push(data.results.filter((_, index) => index % columnCount === i));
     }
     return result;
   };
 
   const gameColumns = splitGames();
 
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text>{error.message}</Text>;
 
   return (
     <SimpleGrid
