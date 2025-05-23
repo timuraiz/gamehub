@@ -7,9 +7,10 @@ const apiClient = axios.create({
   },
 });
 
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   results: T[];
+  next: string | null;
 }
 
 class APIClient<T> {
@@ -23,7 +24,7 @@ class APIClient<T> {
     const controller = new AbortController();
     const result = await apiClient.get<FetchResponse<T>>(this.endpoint, {
       signal: controller.signal,
-      params: params,
+      params: params?.params,
     });
     return result.data;
   }

@@ -19,7 +19,7 @@ const useData = <T>(
     queryKey: [endpoint, requestConfig],
     queryFn: () => apiClient.getAll(requestConfig),
     staleTime: staleTime,
-    initialData: initialData,
+    initialData: initialData
   });
 
   return { data, error, isLoading };
