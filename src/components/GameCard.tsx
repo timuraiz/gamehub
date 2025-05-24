@@ -11,10 +11,10 @@ import { Genre } from '../hooks/useGenres';
 interface Props {
   game: Game;
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GameCard = ({ game, onSelectGenre, selectedGenre }: Props) => {
+const GameCard = ({ game, onSelectGenre, selectedGenreId }: Props) => {
   const [height, setHeight] = useState<number | null>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -88,7 +88,7 @@ const GameCard = ({ game, onSelectGenre, selectedGenre }: Props) => {
                       key={genre.id}
                       genre={genre}
                       onSelectGenre={onSelectGenre}
-                      selectedGenre={selectedGenre}
+                      selectedGenreId={selectedGenreId}
                       fontSize="xs"
                       color="gray.500"
                     />

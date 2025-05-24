@@ -5,10 +5,10 @@ import { GenreButton } from './GenreButton';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
   if (error) return error.message;
@@ -32,7 +32,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
               />
               <GenreButton
                 genre={genre}
-                selectedGenre={selectedGenre}
+                selectedGenreId={selectedGenreId}
                 onSelectGenre={onSelectGenre}
               />
             </HStack>

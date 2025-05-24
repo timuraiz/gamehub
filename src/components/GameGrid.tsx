@@ -12,10 +12,10 @@ import { InView } from 'react-intersection-observer';
 interface Props {
   gameQuery: GameQuery;
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GameGrid = ({ gameQuery, onSelectGenre, selectedGenre }: Props) => {
+const GameGrid = ({ gameQuery, onSelectGenre, selectedGenreId }: Props) => {
   const { data, error, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
@@ -61,13 +61,16 @@ const GameGrid = ({ gameQuery, onSelectGenre, selectedGenre }: Props) => {
           <GridItem key={index}>
             {column.map((game: Game) => (
               <GameCardContainer key={game.id}>
-                <GameCard game={game} onSelectGenre={onSelectGenre} selectedGenre={selectedGenre} />
+                <GameCard
+                  game={game}
+                  onSelectGenre={onSelectGenre}
+                  selectedGenreId={selectedGenreId}
+                />
               </GameCardContainer>
             ))}
           </GridItem>
         ))}
       </SimpleGrid>
-      {/* {data?.pages.length && data.pages.length > 1 && ( */}
       <InView
         onChange={(inView) => {
           if (inView && hasNextPage && !isFetchingNextPage) {

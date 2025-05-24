@@ -4,14 +4,14 @@ import { Genre } from '../hooks/useGenres';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
   genre: Genre;
   fontSize?: string;
   color?: string;
 }
 export const GenreButton = ({
   onSelectGenre,
-  selectedGenre,
+  selectedGenreId,
   genre,
   fontSize = 'md',
   color = 'gray.400',
@@ -20,7 +20,7 @@ export const GenreButton = ({
     <Button
       whiteSpace="normal"
       textAlign="left"
-      fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+      fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
       onClick={() => onSelectGenre(genre)}
       fontSize={fontSize}
       color={color}
