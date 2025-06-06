@@ -1,27 +1,21 @@
 import { Button } from '@chakra-ui/react';
-import React from 'react';
 import { Genre } from '../hooks/useGenres';
+import useGameQueryStore from '../store';
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?: number;
   genre: Genre;
   fontSize?: string;
   color?: string;
 }
-export const GenreButton = ({
-  onSelectGenre,
-  selectedGenreId,
-  genre,
-  fontSize = 'md',
-  color = 'gray.400',
-}: Props) => {
+export const GenreButton = ({ genre, fontSize = 'md', color = 'gray.400' }: Props) => {
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   return (
     <Button
       whiteSpace="normal"
       textAlign="left"
       fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
-      onClick={() => onSelectGenre(genre)}
+      onClick={() => setGenreId(genre.id)}
       fontSize={fontSize}
       color={color}
       variant="link"

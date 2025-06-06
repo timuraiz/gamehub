@@ -6,15 +6,12 @@ import Emoji from './Emoji';
 import PlatformIconList from './PlatformIconList';
 import { useRef, useState } from 'react';
 import { GenreButton } from './GenreButton';
-import { Genre } from '../hooks/useGenres';
 
 interface Props {
   game: Game;
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?: number;
 }
 
-const GameCard = ({ game, onSelectGenre, selectedGenreId }: Props) => {
+const GameCard = ({ game }: Props) => {
   const [height, setHeight] = useState<number | null>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -84,14 +81,7 @@ const GameCard = ({ game, onSelectGenre, selectedGenreId }: Props) => {
                   justifyContent="flex-end"
                 >
                   {game.genres.slice(0, 3).map((genre) => (
-                    <GenreButton
-                      key={genre.id}
-                      genre={genre}
-                      onSelectGenre={onSelectGenre}
-                      selectedGenreId={selectedGenreId}
-                      fontSize="xs"
-                      color="gray.500"
-                    />
+                    <GenreButton key={genre.id} genre={genre} fontSize="xs" color="gray.500" />
                   ))}
                   {game.genres.length > 3 && (
                     <Text fontSize="xs" color="gray.500">
