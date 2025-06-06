@@ -1,12 +1,7 @@
 import useData from './useData';
 import { FetchResponse } from '../services/api-client';
 import platforms from '../data/platforms';
-
-interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platform } from '../entities/Platform';
 
 const usePlatforms = () =>
   useData<FetchResponse<Platform>>(

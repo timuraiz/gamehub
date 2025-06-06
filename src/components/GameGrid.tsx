@@ -1,5 +1,6 @@
 import { SimpleGrid, Text, GridItem, Button, Flex, Show, Box } from '@chakra-ui/react';
-import useGames, { Game } from '../hooks/useGames';
+import useGames from '../hooks/useGames';
+import { Game } from '../entities/Game';
 import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 import GameCardSkeleton from './GameCardSkeleton';
