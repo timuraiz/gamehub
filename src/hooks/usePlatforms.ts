@@ -1,4 +1,5 @@
 import useData from './useData';
+import { FetchResponse } from '../services/api-client';
 import platforms from '../data/platforms';
 
 interface Platform {
@@ -8,7 +9,7 @@ interface Platform {
 }
 
 const usePlatforms = () =>
-  useData<Platform>(
+  useData<FetchResponse<Platform>>(
     '/platforms/lists/parents',
     {
       params: {
@@ -19,6 +20,7 @@ const usePlatforms = () =>
     {
       count: platforms.length,
       results: platforms,
+      next: null,
     }
   );
 

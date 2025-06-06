@@ -32,7 +32,6 @@ const GameGrid = () => {
   };
 
   if (error) return <Text>{error.message}</Text>;
-  console.log(data?.pages[0].results.length);
   return (
     <>
       <Show above="lg">

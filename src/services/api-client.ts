@@ -28,6 +28,15 @@ class APIClient<T> {
     });
     return result.data;
   }
+
+  async get(params?: AxiosRequestConfig) {
+    const controller = new AbortController();
+    const result = await apiClient.get<T>(this.endpoint, {
+      signal: controller.signal,
+      params: params?.params,
+    });
+    return result.data;
+  }
 }
 
 export default APIClient;

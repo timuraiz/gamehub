@@ -1,5 +1,5 @@
-import genres from '../data/genres';
 import useData from './useData';
+import { FetchResponse } from '../services/api-client';
 
 export interface Genre {
   id: number;
@@ -7,6 +7,6 @@ export interface Genre {
   image_background: string;
 }
 
-const useGenres = () => useData<Genre>('/genres', { params: { ordering: 'name' } });
+const useGenres = () => useData<FetchResponse<Genre>>('/genres', { params: { ordering: 'name' } });
 
 export default useGenres;
