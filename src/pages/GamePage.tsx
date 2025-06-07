@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Box, Heading, Spinner, Text } from '@chakra-ui/react';
 import useGame from '../hooks/useGame';
 
-const GameDetail = () => {
+const GamePage = () => {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
 
@@ -18,4 +18,4 @@ const GameDetail = () => {
   );
 };
 
-export default GameDetail;
+export default GamePage;

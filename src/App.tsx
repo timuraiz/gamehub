@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
-import GameGrid from './components/GameGrid';
-import GameDetail from './components/GameDetail';
 import { ErrorPage } from './components/ErrorPage';
+import GamePage from './pages/GamePage';
+import GamesPage from './pages/GamesPage';
 
 const router = createBrowserRouter([
   {
@@ -10,8 +10,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <GameGrid /> },
-      { path: 'games/:slug', element: <GameDetail /> },
+      { index: true, element: <GamesPage /> },
+      { path: 'games/:slug', element: <GamePage /> },
     ],
   },
 ]);

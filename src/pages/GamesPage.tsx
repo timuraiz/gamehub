@@ -1,20 +1,19 @@
-import { SimpleGrid, Text, GridItem, Button, Flex, Show, Box } from '@chakra-ui/react';
+import { SimpleGrid, Text, GridItem, Button, Flex, Show, Box, Grid } from '@chakra-ui/react';
 import useGames from '../hooks/useGames';
 import { Game } from '../entities/Game';
-import GameCard from './GameCard';
-import GameCardContainer from './GameCardContainer';
-import GameCardSkeleton from './GameCardSkeleton';
+import GameCard from '../components/GameCard';
+import GameCardContainer from '../components/GameCardContainer';
+import GameCardSkeleton from '../components/GameCardSkeleton';
 import { useState } from 'react';
 import { FetchResponse } from '../services/api-client';
 import { InView } from 'react-intersection-observer';
 import useGameQueryStore from '../store';
-import GenreList from './GenreList';
-import NavBar from './NavBar';
-import PlatformSelector from './PlatformSelector';
-import GameHeading from './GameHeading';
-import SortSelector from './SortSelector';
+import GenreList from '../components/GenreList';
+import PlatformSelector from '../components/PlatformSelector';
+import GameHeading from '../components/GameHeading';
+import SortSelector from '../components/SortSelector';
 
-const GameGrid = () => {
+const GamesPage = () => {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
   const { data, error, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useGames(gameQuery);
@@ -34,7 +33,16 @@ const GameGrid = () => {
 
   if (error) return <Text>{error.message}</Text>;
   return (
-    <>
+    <Grid
+      templateAreas={{
+        base: `"main"`,
+        lg: `"aside main"`,
+      }}
+      templateColumns={{
+        base: '1fr',
+        lg: '250px 1fr',
+      }}
+    >
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList />
@@ -103,8 +111,8 @@ const GameGrid = () => {
         </InView>
         {/* )} */}
       </GridItem>
-    </>
+    </Grid>
   );
 };
 
-export default GameGrid;
+export default GamesPage;
