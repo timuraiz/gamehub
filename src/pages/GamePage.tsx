@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Box, Button, Heading, Spinner, Text } from '@chakra-ui/react';
 import useGame from '../hooks/useGame';
 import { useState } from 'react';
+import { GameAttributes } from '../components/GameAttributes';
 
 const GamePage = () => {
   const { slug } = useParams();
@@ -23,6 +24,7 @@ const GamePage = () => {
       <Button onClick={() => setIsTrimmed(!isTrimmed)}>
         {isTrimmed ? 'Show more' : 'Show less'}
       </Button>
+      <GameAttributes game={game} />
     </Box>
   );
 };
