@@ -3,6 +3,8 @@ import { Box, Button, Heading, Spinner, Text } from '@chakra-ui/react';
 import useGame from '../hooks/useGame';
 import { useState } from 'react';
 import { GameAttributes } from '../components/GameAttributes';
+import { Trailers } from '../components/Trailers';
+import { ScreenShots } from '../components/ScreenShots';
 
 const GamePage = () => {
   const { slug } = useParams();
@@ -25,6 +27,8 @@ const GamePage = () => {
         {isTrimmed ? 'Show more' : 'Show less'}
       </Button>
       <GameAttributes game={game} />
+      <Trailers gameId={game.id} />
+      <ScreenShots gameId={game.id} />
     </Box>
   );
 };
