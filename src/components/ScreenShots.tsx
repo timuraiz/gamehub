@@ -13,7 +13,7 @@ export const ScreenShots = ({ gameId }: Props) => {
 
   return (
     <Box>
-      <Heading marginY={5}>Screenshots</Heading>
+      {/* <Heading marginY={5}>Screenshots</Heading> */}
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={2}>
         {data?.results.map((screenshot) => (
           <Image key={Math.random()} src={screenshot.image} alt="Game screenshot" />

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Box, Button, Heading, Spinner, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 import useGame from '../hooks/useGame';
 import { useState } from 'react';
 import { GameAttributes } from '../components/GameAttributes';
@@ -22,13 +22,19 @@ const GamePage = () => {
   return (
     <Box p={5}>
       <Heading>{game?.name}</Heading>
-      <Text>{trimmedDescription}</Text>
-      <Button onClick={() => setIsTrimmed(!isTrimmed)}>
-        {isTrimmed ? 'Show more' : 'Show less'}
-      </Button>
-      <GameAttributes game={game} />
-      <Trailers gameId={game.id} />
-      <ScreenShots gameId={game.id} />
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+        <Box>
+          <Text marginY={5}>{trimmedDescription}</Text>
+          <Button marginBottom={5} onClick={() => setIsTrimmed(!isTrimmed)} colorScheme="yellow">
+            {isTrimmed ? 'Show more' : 'Show less'}
+          </Button>
+          <GameAttributes game={game} />
+        </Box>
+        <Box>
+          <Trailers gameId={game.id} />
+          <ScreenShots gameId={game.id} />
+        </Box>
+      </SimpleGrid>
     </Box>
   );
 };

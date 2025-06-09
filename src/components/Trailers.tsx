@@ -13,8 +13,8 @@ export const Trailers = ({ gameId }: Props) => {
   if (!data?.results.length) return null;
 
   return (
-    <Box>
-      <Heading marginY={5}>Trailer</Heading>
+    <Box marginBottom={5}>
+      {/* <Heading marginY={5}>Trailer</Heading> */}
       <video
         key={data.results[0].id}
         src={data.results[0].data['480']}
